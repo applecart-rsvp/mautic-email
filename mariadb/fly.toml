@@ -1,0 +1,30 @@
+# fly.toml app configuration file generated for mautic-db on 2024-01-09T13:05:06-07:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = "mautic-db"
+primary_region = "atl"
+kill_signal = "SIGINT"
+kill_timeout = "5s"
+
+[build]
+  image = "mariadb:11.2"
+
+[env]
+  MYSQL_DATABASE = "mautic4"
+  MYSQL_DB_USER = "root"
+
+[processes]
+  app = "--datadir /data/mysql --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci --sql-mode='' --performance-schema=OFF --innodb-buffer-pool-size=64M"
+
+[[mounts]]
+  source = "mariadbdata"
+  destination = "/data"
+  auto_extend_size_threshold = 0
+
+[[vm]]
+  cpu_kind = "shared"
+  cpus = 2
+  memory_mb = 2048
+  processes = ["app"]
