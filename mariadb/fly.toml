@@ -16,7 +16,7 @@ kill_timeout = "5s"
   MYSQL_DB_USER = "root"
 
 [processes]
-  app = "--datadir /data/mysql --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci --sql-mode='' --performance-schema=OFF --innodb-buffer-pool-size=64M"
+  app = "--datadir /data/mysql --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci --sql-mode='' --performance-schema=OFF --innodb-buffer-pool-size=1400M --max_connections=500"
 
 [[mounts]]
   source = "mariadbdata"

@@ -42,6 +42,6 @@ primary_region = "atl"
 
 [[vm]]
   cpu_kind = "shared"
-  cpus = 2
-  memory_mb = 2048
+  cpus = 4
+  memory_mb = 4096
 
